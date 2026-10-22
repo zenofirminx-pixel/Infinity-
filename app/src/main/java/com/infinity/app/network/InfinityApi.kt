@@ -46,7 +46,7 @@ class InfinityApi {
         client.newCall(request).execute().use { response ->
             if (!response.isSuccessful) throw IOException("Serveur Infinity : HTTP ${response.code}")
             val body = response.body ?: throw IOException("Réponse vide du serveur.")
-            val contentType = response.header("Content-Type", "").lowercase()
+            val contentType = response.header("Content-Type").orEmpty().lowercase()
             if (!contentType.contains("text/event-stream")) {
                 val raw = body.string()
                 val obj = runCatching { JSONObject(raw) }.getOrNull()
