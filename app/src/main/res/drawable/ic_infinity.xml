@@ -1,2 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<bitmap xmlns:android="http://schemas.android.com/apk/res/android" android:src="@drawable/infinity_logo" android:gravity="center" />
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="128dp" android:height="128dp" android:viewportWidth="128" android:viewportHeight="128">
+    <path android:fillColor="#00000000" android:strokeColor="#B69CFF" android:strokeWidth="9"
+        android:strokeLineCap="round" android:strokeLineJoin="round"
+        android:pathData="M64,64 C49,43 39,31 26,40 C10,51 18,77 34,84 C45,89 55,78 64,64 C73,50 83,39 94,44 C111,51 111,76 95,85 C82,92 73,78 64,64 Z" />
+</vector>

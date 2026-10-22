@@ -2,8 +2,6 @@ package com.infinity.app.ui
 
 import android.graphics.Typeface
 import android.view.Gravity
-import android.view.animation.Animation
-import android.view.animation.ScaleAnimation
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.LinearLayout
@@ -43,20 +41,21 @@ class MessageAdapter(
             ).apply { bottomMargin = 8 }
         }
         val isTypingDot = !item.fromUser && item.text == "●" && item.questionForRating == null
-        val text = TextView(ctx).apply {
-            this.text = item.text
-            textSize = if (isTypingDot) 18f else 16f
-            setTextColor(if (isTypingDot) android.graphics.Color.WHITE else ctx.getColor(R.color.infinity_text))
-            setLineSpacing(3f, 1.12f)
-            if (isTypingDot) {
-                val pulse = ScaleAnimation(0.65f, 1.35f, 0.65f, 1.35f, Animation.RELATIVE_TO_SELF, 0.5f, Animation.RELATIVE_TO_SELF, 0.5f)
-                pulse.duration = 650
-                pulse.repeatMode = Animation.REVERSE
-                pulse.repeatCount = Animation.INFINITE
-                startAnimation(pulse)
-            } else clearAnimation()
+        if (isTypingDot) {
+            bubble.addView(TypingIndicatorView(ctx), LinearLayout.LayoutParams(
+                (28 * ctx.resources.displayMetrics.density).toInt(),
+                (28 * ctx.resources.displayMetrics.density).toInt()
+            ))
+        } else {
+            val text = TextView(ctx).apply {
+                this.text = item.text
+                textSize = 16f
+                setTextColor(ctx.getColor(R.color.infinity_text))
+                setLineSpacing(3f, 1.12f)
+                textIsSelectable = true
+            }
+            bubble.addView(text)
         }
-        bubble.addView(text)
         if (!item.fromUser && item.questionForRating != null) {
             val row = LinearLayout(ctx).apply { orientation = LinearLayout.HORIZONTAL; gravity = Gravity.END }
             listOf("👍" to "up", "👎" to "down").forEach { (label, value) ->
