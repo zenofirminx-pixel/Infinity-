@@ -52,7 +52,7 @@ class MessageAdapter(
                 textSize = 16f
                 setTextColor(ctx.getColor(R.color.infinity_text))
                 setLineSpacing(3f, 1.12f)
-                textIsSelectable = true
+                setTextIsSelectable(true)
             }
             bubble.addView(text)
         }
