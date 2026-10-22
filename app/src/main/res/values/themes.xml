@@ -10,4 +10,10 @@
         <item name="android:navigationBarColor">@color/infinity_bg</item>
         <item name="android:windowBackground">@color/infinity_bg</item>
     </style>
+
+    <style name="Theme.Infinity.Splash" parent="Theme.Infinity">
+        <item name="android:windowBackground">#000000</item>
+        <item name="android:statusBarColor">#000000</item>
+        <item name="android:navigationBarColor">#000000</item>
+    </style>
 </resources>
