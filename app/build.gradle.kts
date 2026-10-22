@@ -10,7 +10,7 @@ android {
         minSdk = 24
         targetSdk = 35
         versionCode = 1
-        versionName = "1.0.0"
+        versionName = "2.2026.4"
     }
     buildFeatures { viewBinding = true }
     compileOptions {
