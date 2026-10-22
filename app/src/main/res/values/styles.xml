@@ -1,0 +1,15 @@
+<resources>
+    <style name="Theme.Infinity" parent="@android:style/Theme.Material.NoActionBar">
+        <item name="android:fontFamily">sans</item>
+        <item name="android:windowLightStatusBar">false</item>
+        <item name="android:statusBarColor">#080B14</item>
+        <item name="android:navigationBarColor">#080B14</item>
+        <item name="android:colorAccent">#8AB4F8</item>
+        <item name="android:windowBackground">#080B14</item>
+    </style>
+    <style name="Theme.Infinity.Splash" parent="Theme.Infinity">
+        <item name="android:windowBackground">#000000</item>
+        <item name="android:statusBarColor">#000000</item>
+        <item name="android:navigationBarColor">#000000</item>
+    </style>
+</resources>

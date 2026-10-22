@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="infinity_bg">#080B12</color>
+    <color name="infinity_surface">#121826</color>
+    <color name="infinity_surface_2">#1A2334</color>
+    <color name="infinity_blue">#6EA8FF</color>
+    <color name="infinity_purple">#B69CFF</color>
+    <color name="infinity_text">#F5F7FF</color>
+    <color name="infinity_muted">#A9B4CA</color>
+</resources>

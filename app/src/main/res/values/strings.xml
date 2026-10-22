@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Infinity</string>
+    <string name="welcome_title">Bonjour, bienvenue sur Infinity</string>
+    <string name="welcome_subtitle">Posez votre question. On réfléchit ensemble.</string>
+    <string name="input_hint">Écrire à Infinity…</string>
+    <string name="send">Envoyer</string>
+    <string name="new_chat">Nouvelle conversation</string>
+    <string name="history">Historique local</string>
+    <string name="settings">Paramètres</string>
+    <string name="feedback">Signaler un bug</string>
+</resources>
