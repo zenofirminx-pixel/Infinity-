@@ -3,9 +3,14 @@ package com.infinity.app.ui
 import androidx.annotation.DrawableRes
 import com.infinity.app.R
 
-/** Reuses the project's existing XML drawables instead of introducing generic bitmap icons. */
+/** Reuses the project's existing XML drawables. */
 object InfinityIcons {
-    @DrawableRes const val infinity: Int = R.drawable.ic_infinity
-    @DrawableRes const val send: Int = R.drawable.ic_send
-    @DrawableRes const val add: Int = R.drawable.ic_add
+    @DrawableRes
+    val infinity: Int = R.drawable.ic_infinity
+
+    @DrawableRes
+    val send: Int = R.drawable.ic_send
+
+    @DrawableRes
+    val add: Int = R.drawable.ic_add
 }
