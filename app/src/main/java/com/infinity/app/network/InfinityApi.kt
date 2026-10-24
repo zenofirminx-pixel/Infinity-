@@ -17,7 +17,8 @@ import java.util.concurrent.TimeUnit
  */
 class InfinityApi {
     companion object {
-        val BASE_URL = "https://" + "aur" + "-" + "x" + "-backend.vercel.app"
+        val CHAT_URL = "https://aur-x-backend.vercel.app/api/chat"
+        val BASE_URL = "https://aur-x-backend.vercel.app"
         private val JSON = "application/json; charset=utf-8".toMediaType()
     }
 
@@ -41,7 +42,7 @@ class InfinityApi {
     fun sendMessage(message: String, convId: String? = null, onSearch: (Boolean) -> Unit = {}, onChunk: (String) -> Unit = {}): ChatResult {
         val payload = JSONObject().put("message", message)
         if (!convId.isNullOrBlank()) payload.put("convId", convId)
-        val request = Request.Builder().url("$BASE_URL/api/chat")
+        val request = Request.Builder().url(CHAT_URL)
             .header("Accept", "text/event-stream, application/json")
             .header("Cache-Control", "no-cache")
             .post(payload.toString().toRequestBody(JSON)).build()
