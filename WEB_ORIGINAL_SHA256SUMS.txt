@@ -1,0 +1,10 @@
+# web-original file integrity (SHA-256)
+These files were copied byte-for-byte from Infinity_ui-main.zip.
+f78e384804e17eb96ba21ae11153daac39045a1eab8d4f91e7dae52043eb4835  web-original/SW.js
+44646b1b800de0cb44ef36d29510d34ad4e93edd8d49c7e7c5a158022864c5ad  web-original/icon-192.png
+44646b1b800de0cb44ef36d29510d34ad4e93edd8d49c7e7c5a158022864c5ad  web-original/icon-512.png
+444273a1ea0fb862f546b296a25911a886b8cec18b36d1a4bbe4f05cc0f078c6  web-original/icon-static.png
+2b1baeff28a71d815672815509d6866942b989eba6c2f9b533ccdb318640d556  web-original/index.html
+9b9b2dddecc884a9358fa7de2283a7906108817a0364ae14f3100afeb271bf9a  web-original/manifest.json
+6c33374916348e94988f73cd7e7f94d5e5b5863c4f18f901ab9e82d1f4115673  web-original/script.js
+e0aa6f064bb850024a03e5914d83145c36f039b22f96d2d8348f30c3299786e3  web-original/style.css
