@@ -38,10 +38,12 @@ class InfinityApi {
     data class ChatResult(val answer: String, val searchedWeb: Boolean = false)
 
     @Throws(IOException::class)
-    fun sendMessage(message: String, convId: String? = null, onSearch: (Boolean) -> Unit = {}): ChatResult {
+    fun sendMessage(message: String, convId: String? = null, onSearch: (Boolean) -> Unit = {}, onChunk: (String) -> Unit = {}): ChatResult {
         val payload = JSONObject().put("message", message)
         if (!convId.isNullOrBlank()) payload.put("convId", convId)
         val request = Request.Builder().url("$BASE_URL/api/chat")
+            .header("Accept", "text/event-stream, application/json")
+            .header("Cache-Control", "no-cache")
             .post(payload.toString().toRequestBody(JSON)).build()
         client.newCall(request).execute().use { response ->
             if (!response.isSuccessful) throw IOException("Serveur Infinity : HTTP ${response.code}")
@@ -57,33 +59,9 @@ class InfinityApi {
                 )
             }
 
-            val answer = StringBuilder()
-            var searched = false
-            var eventName = ""
-            body.charStream().buffered().useLines { lines ->
-                lines.forEach { line ->
-                    when {
-                        line.startsWith("event:") -> eventName = line.removePrefix("event:").trim()
-                        line.startsWith("data:") -> {
-                            val data = line.removePrefix("data:").trim()
-                            val obj = runCatching { JSONObject(data) }.getOrNull()
-                            val type = obj?.optString("type").orEmpty().ifBlank { eventName }
-                            if (type.contains("search_started")) { searched = true; onSearch(true) }
-                            if (type.contains("search_completed") || type.contains("search_unavailable")) onSearch(false)
-                            val text = obj?.optString("text")?.takeIf { it.isNotBlank() }
-                                ?: obj?.optString("token")?.takeIf { it.isNotBlank() }
-                                ?: obj?.optString("content")?.takeIf { it.isNotBlank() }
-                            if (text != null) answer.append(text)
-                            else if (obj == null && data.isNotBlank() && data != "[DONE]") answer.append(data)
-                            eventName = ""
-                        }
-                        line.isBlank() -> eventName = ""
-                    }
-                }
-            }
-            onSearch(false)
-            if (answer.isBlank()) throw IOException("Le serveur n'a pas renvoyé de texte exploitable.")
-            return ChatResult(answer.toString(), searched)
+            val parsed = StreamingResponseReader.read(body.charStream().buffered(), onChunk, onSearch)
+            if (parsed.text.isBlank()) throw IOException("Le serveur n'a pas renvoyé de texte exploitable.")
+            return ChatResult(parsed.text, parsed.searchedWeb)
         }
     }
 

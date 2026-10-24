@@ -1,5 +1,0 @@
-Sources used for this package:
-- User-provided web source archive: Infinity_ui-main.zip (web-original/ is byte-for-byte preserved).
-- Existing Android source archive: Infinity--main.zip / source package snapshot.
-
-This is the native chat/UI slice, not a full port of all web features. The web app remains the behavior/API reference; Android does not load it in a WebView.
